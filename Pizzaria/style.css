@@ -1,0 +1,43 @@
+*{
+    padding: 0%;
+    margin: 0%;
+    border: 0%;
+}
+
+   /* #88A5BF, #D97904, #F2C49B, #BF3604, #733E32 */
+
+html{
+
+    height: 100%;
+    width: 100%;
+    background-color: #8ba1b5;
+
+}
+body{
+
+    height: 100%;
+    width: 100%;
+
+}
+header{
+
+    height: 15%;
+    width: 100%;
+    background-color: #eb5c28;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+#Title{
+
+    color: #8ba1b5;
+
+}
+#MainTitle{
+
+    width: fit-content ;
+    height: 50%;
+    border: solid #8ba1b5;
+
+}
