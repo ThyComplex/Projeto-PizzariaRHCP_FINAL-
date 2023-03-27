@@ -1,58 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>CADASTRO DE CARGO</title>
+</head>
+<body>
+    <form action="<?php echo $_SERVER['PHP_SELF'];?>" method="post">
+        <fieldset >
+           <legend>CADASTRO CARGOS</legend>
+           <input type="text" name="cargo" placeholder="Nome Cargo"> <br>
+           <input type="text" name="salcarg" placeholder="Salario"> <br>
+           <input type="text" name="carghor" placeholder="Carga Horaria"><br> <br>
+           <input type="submit" name="cadastrar" value="Cadastrar">
+           <input type="submit" name="alterar" value="Alterar">
+            <input type="submit" name="delete" value="Deletar"> <br> <br>
+            <button><a href="/Pizzaria/home.html">Voltar a Pagina Inicial ?</a></button>
+       </fieldset>
+
+       <fieldset><Legend>PESQUISA</Legend><fieldset>
+        <input type="text" name="codcarg"  size="10" placeholder="Codigo Cargo" > 
+        <input type="text" name="cargo2" placeholder="Nome Cargo">
+           <input type="submit" name="search" value="Pesquisar">
+           <input type="submit" name="searchall" value="Pesquisar Todos"> <br> <br>
+       </fieldset>
+        <div class="acucar_mascavo">
+        <output> </output>
+
+
+        </div>
+       </fieldset>
+       </form>
+    
+
+
+
+</table>
+</body>
+</html>
 <?php
-    if(isset($_POST['cadastrar'])){
-    
-    include_once('conexao.php');
-    
+    //Função cadastrar: 
+if(isset($_POST['cadastrar'])){include_once('conexao.php');
         $cargo = $_POST['cargo'];
         $salcarg = $_POST['salcarg'];
         $carghor = $_POST['carghor'];
 
-        $insert = "INSERT INTO tb_cargo (cd_cargo,nm_cargo,vl_salario,nu_cargaHor)values('','$cargo','$salcarg','$carghor')";
-   
+        if($cargo != '' and $salcarg != '' and $carghor != ''){
+        $insert = "INSERT INTO tb_cargo (cd_cargo,nm_cargo,vl_salario,nu_cargaHor)values('','$cargo','$salcarg','$carghor')"; 
         mysqli_query($conn,$insert);
-
+        }
+        else {
+            echo "Preencha todos os Campos";
+        }
+        
     mysqli_close($conn);
-
     }
 
+    //função buscar:
+if(isset($_POST['search'])){include_once('conexao.php');
+    $cod = $_POST['codcarg'];
+    $cargo2 = $_POST['cargo2'];
 
-    if(isset($_POST['search'])){
+    if($cod != '' or $cargo2 != ''){
+         if($cod != ''){
+            if($cargo2 != ''){$select="SELECT * FROM tb_cargo WHERE cd_cargo=$cod or nm_cargo='$cargo2';";}
+            else{ $select = "SELECT * FROM tb_cargo WHERE cd_cargo = $cod ;";}  
+            }
+            else{$select = "SELECT * FROM tb_cargo WHERE nm_cargo = '$cargo2';";}
 
-        include_once('conexao.php');
 
-        $cod = $_POST['codcarg'];
-        
-        $select = "SELECT * FROM tb_cargo WHERE cd_cargo = $cod;";
-        
-
-        
         $result = mysqli_query($conn,$select) or die ("erro ao fazer a consulta!");
-        
-        if(mysqli_num_rows($result) != null){   
-
-            echo "<table border='1' id='border'>";
-            echo "<tr><td>CODIGO</td><td>CARGO</td><td>SALARIO</td><td>HORAS</td></tr>";
-
-           while($line = mysqli_fetch_assoc($result)){
-
-            $cod = $line['cd_cargo'];
-            $cargo = $line['nm_cargo'];
-            $salcarg = $line['vl_salario'];
-            $carghor = $line['nu_cargaHor'];
-
-            echo "<tr><td>$cod</td><td>$cargo</td><td>$salcarg</td><td>$carghor</td></tr>";
-            } 
+            if(mysqli_num_rows($result) != null){   
+                echo "<table border='1' id='border'>";
+                echo "<tr><td>CODIGO</td><td>CARGO</td><td>SALARIO</td><td>HORAS</td></tr>";
+                    while($line = mysqli_fetch_assoc($result)){
+                    $cod = $line['cd_cargo'];
+                    $cargo = $line['nm_cargo'];
+                    $salcarg = $line['vl_salario'];
+                    $carghor = $line['nu_cargaHor'];
+                echo "<tr><td>$cod</td><td>$cargo</td><td>$salcarg</td><td>$carghor</td></tr>";
+                } 
             echo"</table>";
-
             mysqli_close($conn);
         }
         else{ echo "Dados nao encontrados";}
+        }
+        else{ echo "Dados nao foram preenchidos!";}
     }
+// Função pesquisar todos os cargos:
+if(isset($_POST['searchall'])){ include_once('conexao.php');
+    $select = "SELECT * FROM tb_cargo;";
+    
+    $result = mysqli_query($conn,$select) or die ("erro ao fazer a consulta!");
+            if(mysqli_num_rows($result) != null){   
+                echo "<table border='1' id='border'>";
+                echo "<tr><td>CODIGO</td><td>CARGO</td><td>SALARIO</td><td>HORAS</td></tr>";
+                    while($line = mysqli_fetch_assoc($result)){
+                    $cod = $line['cd_cargo'];
+                    $cargo = $line['nm_cargo'];
+                    $salcarg = $line['vl_salario'];
+                    $carghor = $line['nu_cargaHor'];
+                echo "<tr><td>$cod</td><td>$cargo</td><td>$salcarg</td><td>$carghor</td></tr>";
+                } 
+            echo"</table>";
+            mysqli_close($conn);
+        }
+        else{ echo "Dados nao encontrados";}
 
-    if(isset($_POST['alterar'])){
-
-        include_once('conexao.php');
-
+}
+     //função alterar:
+if(isset($_POST['alterar'])){ include_once('conexao.php');
         $cod = $_POST['codcarg'];
         $cargo = $_POST['cargo'];
         $salcarg = $_POST['salcarg'];
@@ -65,7 +120,8 @@
         mysqli_close($conn);
     }
 
-    if(isset($_POST['delete'])){
+    //função deletar: 
+if(isset($_POST['delete'])){
 
         include_once('conexao.php');
 
@@ -86,16 +142,3 @@
 
 
 ?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title></title>
-</head>
-<body>
-    <button><a href="/Pizzaria/CadCarg.html">Voltar</a></button>
-    
-</body>
-</html>
