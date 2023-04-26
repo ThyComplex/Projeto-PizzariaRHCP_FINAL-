@@ -1,0 +1,224 @@
+/* CSS DA PAGINA HOME */
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+}
+ body {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background:  #C00E0E  ;
+}
+  .container {
+    width: 90%;
+    height: 80vh;
+    display: flex;
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.466);
+}
+
+/*imagem e div do lado esquerdo da pag*/
+ .formimage {
+    width: 40%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color:#f3e9b5 ;
+    padding: 1rem;
+}
+  .formimage img {
+    width: 340px;
+    height:440px;
+}
+/* fim da div anterior */
+
+
+/* div do lado do "formulario"(lugar dos links) */
+
+ .formpage {
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    justify-content:baseline;
+    align-items: left;
+    background-color: #f3e9b5  ;
+    padding: 3rem;
+   
+}
+/* texto hcp e botoes*/
+ .formheader {
+    margin-bottom: 4rem;
+    display: flex;
+    justify-content: space-between;
+}
+  .formheader h1{
+    font-family:  'TeX Gyre Schola', serif;
+   
+}
+  .formheader h1::after {
+   content: '';
+    display: block;
+     width: 5rem;
+     height: 0.3rem;
+     background-color: #C00E0E;
+    margin: 0 auto;
+   position: absolute;
+  border-radius: 10px;
+ }
+
+ /* botao cadastro de funcionario */
+  .cadfuncbutton {
+ display: flex;
+ align-items: center;
+ }
+ .cadfuncbutton button {
+  border: none;
+  background-color:#C00E0E ;
+  padding: 0.4rem 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+}       
+  .cadfuncbutton button:hover {
+ background-color: #733E32;
+  } 
+   .cadfuncbutton button a {
+    text-decoration:none;
+      font-weight: 500;
+      color: #fff;
+}
+
+/* botao cadastro de cargo */
+ .cadcargbutton {
+       display: flex;
+        align-items: center;
+ }
+.cadcargbutton button {
+       border: none;
+       background-color:#C00E0E ;
+       padding: 0.4rem 1rem;
+       border-radius: 5px;
+       cursor: pointer;
+       }          
+.cadcargbutton button:hover {
+ background-color: #733E32;
+ }
+           
+.cadcargbutton button a{
+    text-decoration:none;
+      font-weight: 500;
+      color:#fff;
+ }
+
+ /* botao cad itens */
+ .caditensbutton {
+    display: flex;
+     align-items: center;
+}
+.caditensbutton button {
+    border: none;
+    background-color:#C00E0E ;
+    padding: 0.4rem 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    }          
+.caditensbutton button:hover {
+background-color: #733E32;
+}
+        
+.caditensbutton button a{
+ text-decoration:none;
+   font-weight: 500;
+   color:#fff;
+}
+
+/* botao cadpizza */
+.cadpizzabutton {
+    display: flex;
+     align-items: center;
+}
+.cadpizzabutton button {
+    border: none;
+    background-color:#C00E0E ;
+    padding: 0.4rem 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    }          
+.cadpizzabutton button:hover {
+background-color: #733E32;
+}
+        
+.cadpizzabutton button a{
+ text-decoration:none;
+   font-weight: 500;
+   color:#fff;
+}
+
+/* botao cad bebidas */
+.cadbebidasbutton {
+    display: flex;
+     align-items: center;
+}
+.cadbebidasbutton button {
+    border: none;
+    background-color:#C00E0E;
+    padding: 0.4rem 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    }          
+.cadbebidasbutton button:hover {
+background-color: #733E32;
+}
+        
+.cadbebidasbutton button a{
+ text-decoration:none;
+   font-weight: 500;
+   color:#fff;
+}
+
+/* botao cad pedidos */
+.cadpedidosbutton {
+    display: flex;
+     align-items: center;
+}
+.cadpedidosbutton button {
+    border: none;
+    background-color:#C00E0E ;
+    padding: 0.4rem 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    }          
+.cadpedidosbutton button:hover {
+background-color: #733E32;
+}
+        
+.cadpedidosbutton button a{
+ text-decoration:none;
+   font-weight: 500;
+   color:#fff;
+}
+
+/* botao cad clientes */
+.cadclientesbutton {
+    display: flex;
+     align-items: center;
+}
+.cadclientesbutton button {
+    border: none;
+    background-color:#C00E0E ;
+    padding: 0.4rem 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    }          
+.cadclientesbutton button:hover {
+background-color:  #733E32;
+}
+        
+.cadclientesbutton button a{
+ text-decoration:none;
+   font-weight: 500;
+   color:#fff;
+}
+/*cores (amarelo #FCE360) #D97904   #733E32    #BF3604*/
